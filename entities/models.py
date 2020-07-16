@@ -86,10 +86,10 @@ class Hero(Entity):
 
 
 
-# class HeroProxy(Hero):
+class HeroProxy(Hero):
 
-#     class Meta:
-#         proxy = True
+    class Meta:
+        proxy = True
 
 class Villain(Entity):
     is_immortal = models.BooleanField(default=False)
@@ -120,9 +120,9 @@ class HeroAcquaintance(models.Model):
     #     self.category = self.hero.category
     #     super().save(*args, **kwargs)
 
-# class AllEntity(models.Model):
-#     name = models.CharField(max_length=100)
+class AllEntity(models.Model):
+    name = models.CharField(max_length=100)
 
-#     class Meta:
-#         managed = False
-#         db_table = "entities_entity"
+    class Meta:
+        managed = False
+        db_table = "entities_entity"

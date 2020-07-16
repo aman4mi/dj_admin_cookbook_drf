@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from .models import Category, Origin, Hero, Villain, HeroAcquaintance
+from .models import Category, Origin, Hero, HeroProxy, Villain, HeroAcquaintance, AllEntity
 import csv
 import sys
 from django import forms
@@ -228,6 +228,11 @@ class HeroAdmin(admin.ModelAdmin, ExportCsvMixin):
 
 
 
+@admin.register(HeroProxy)
+class HeroProxyAdmin(admin.ModelAdmin):
+    list_display = ("name", "is_immortal", "category", "origin",)
+    readonly_fields = ("name", "is_immortal", "category", "origin",)
+
 @admin.register(Villain)
 class VillainAdmin(admin.ModelAdmin, ExportCsvMixin):
     list_display = ("name", "category", "origin")
@@ -261,6 +266,11 @@ class CategoryAdmin(admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        return False        
+        return False    
+
+
+@admin.register(AllEntity)
+class AllEntiryAdmin(admin.ModelAdmin):
+    list_display = ("id", "name")            
 
     
